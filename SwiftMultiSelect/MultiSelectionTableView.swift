@@ -226,7 +226,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
             self.searchString = ""
         }
         
-        SwiftMultiSelect.delegate?.userDidSearch(searchString: searchText)
+        SwiftMultiSelect.delegate?.userDidSearch(searchString: searchText, tableView: self.tableView)
         
         self.tableView.reloadData()
     }
