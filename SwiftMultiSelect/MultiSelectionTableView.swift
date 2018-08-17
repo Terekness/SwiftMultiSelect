@@ -88,12 +88,12 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
                 cell.initials.text          = item.getInitials()
                 cell.initials.isHidden      = false
                 cell.imageAvatar.isHidden   = true
-            }else{
-                if item.imageURL != ""{
+            } else {
+                if let imageURL = item.imageURL {
                     cell.initials.isHidden      = true
                     cell.imageAvatar.isHidden   = false
-                    cell.imageAvatar.setImageFromURL(stringImageUrl: item.imageURL!)
-                }else{
+                    cell.imageAvatar.setImageFromURL(stringImageUrl: imageURL)
+                } else {
                     cell.imageAvatar.image      = item.image
                     cell.initials.isHidden      = true
                     cell.imageAvatar.isHidden   = false
