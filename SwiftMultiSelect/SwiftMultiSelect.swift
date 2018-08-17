@@ -192,11 +192,12 @@ public struct SwiftMultiSelectItem{
     public var row          :   Int?
     
     ///Unique identifier
-    fileprivate(set) var id :   Int?
+    fileprivate(set) var id :   String?
     
     /// String representation for struct
     public var string  :   String{
         var describe = "\n+--------------------+"
+        describe += "\n| id: \(id)"
         describe += "\n| title: \(title)"
         describe += "\n| description: \(String(describing: self.description))"
         describe += "\n| userInfo: \(String(describing: userInfo))"
@@ -213,11 +214,14 @@ public struct SwiftMultiSelectItem{
     ///   - image: image asset
     ///   - imageURL: image url
     ///   - userInfo: optional information data
-    public init(row:Int,title:String,description:String? = nil,image:UIImage? = nil,imageURL:String? = nil,color:UIColor? = nil, userInfo:Any? = nil) {
+    public init(row:Int,title:String, id:String? = nil, description:String? = nil,image:UIImage? = nil,imageURL:String? = nil,color:UIColor? = nil, userInfo:Any? = nil) {
         
         self.title = title
         self.row   = row
         
+        if let id = id{
+            self.id = id
+        }
         if let desc = description{
             self.description = desc
         }
