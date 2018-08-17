@@ -208,6 +208,9 @@ class MultiSelecetionViewController: UIViewController,UIGestureRecognizerDelegat
         
         super.viewDidLoad()
         
+        self.edgesForExtendedLayout = []
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         self.title = Config.viewTitle
         
         rightButtonBar.isEnabled                = false
