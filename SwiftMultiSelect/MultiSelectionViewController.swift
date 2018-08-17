@@ -43,7 +43,7 @@ class MultiSelecetionViewController: UIViewController,UIGestureRecognizerDelegat
         layout.scrollDirection          = UICollectionViewScrollDirection.horizontal
         layout.minimumInteritemSpacing  = 0
         layout.minimumLineSpacing       = 0
-        layout.itemSize                 = CGSize(width: CGFloat(Config.selectorStyle.selectionHeight, height: CGFloat(Config.selectorStyle.selectionHeight));
+        layout.itemSize                 = CGSize(width: CGFloat(Config.selectorStyle.selectionHeight), height: CGFloat(Config.selectorStyle.selectionHeight));
         
         //Build collectin view
         let selected                    = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
