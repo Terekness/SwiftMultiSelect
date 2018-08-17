@@ -302,7 +302,7 @@ public protocol SwiftMultiSelectDelegate{
     func didCloseSwiftMultiSelect()
     
     /// Tell to delegate user has closed without select
-    func userDidSearch(searchString:String)
+    func userDidSearch(searchString:String, tableView: UITableView)
     
     
 }
