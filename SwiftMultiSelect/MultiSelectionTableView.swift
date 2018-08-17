@@ -15,7 +15,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -110,7 +110,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
         
         //Set initial state
         if let itm_pre = self.selectedItems.index(where: { (itm) -> Bool in
-            itm == item
+            itm == item && item.id == itm.id
         }){
             self.selectedItems[itm_pre].color = cell.initials.backgroundColor!
             cell.accessoryType = UITableViewCellAccessoryType.checkmark
@@ -143,12 +143,14 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
     /// - Parameters:
     ///   - row: index of row
     ///   - selected: true = chechmark, false = none
-    func reloadCellState(row:Int, selected:Bool){
-        
-        if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? CustomTableCell{
-            cell.accessoryType = (selected) ? .checkmark : .none
-        }
-        
+    func reloadCellState(row:Int, item: SwiftMultiSelectItem, selected:Bool){
+        if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? CustomTableCell {
+            var selectedAndFoundInTable = selected
+            if let cellItem = cell.item, let cellItemId = cellItem.id, let itemId = item.id {
+                selectedAndFoundInTable = selected && cellItemId == itemId
+            }
+            cell.accessoryType = selectedAndFoundInTable ? .checkmark : .none
+        } 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -202,7 +204,7 @@ extension MultiSelecetionViewController:UITableViewDelegate,UITableViewDataSourc
         if searchString != ""{
             searchBar.text = ""
             searchString = ""
-            SwiftMultiSelect.delegate?.userDidSearch(searchString: "")
+            SwiftMultiSelect.delegate?.userDidSearch(searchString: "", tableView: self.tableView)
             self.tableView.reloadData()
         }
 
