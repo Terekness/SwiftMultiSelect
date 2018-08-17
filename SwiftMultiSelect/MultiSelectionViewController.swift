@@ -173,6 +173,9 @@ class MultiSelecetionViewController: UIViewController,UIGestureRecognizerDelegat
         //Add all constraints to view
         view.addConstraints(stackView_H)
         view.addConstraints(stackView_V)
+        
+         //Add a specific constraint to maitain top search bar fixed to parent view top anchor
+        stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
     }
     
     
