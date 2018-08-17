@@ -56,17 +56,17 @@ extension MultiSelecetionViewController:UICollectionViewDelegate,UICollectionVie
             }
            
         //Item is custom type
-        }else{
+        } else {
             if item.image == nil && item.imageURL == nil{
                 cell.initials.text          = item.getInitials()
                 cell.initials.isHidden      = false
                 cell.imageAvatar.isHidden   = true
             }else{
-                if item.imageURL != ""{
+                if let imageURL = item.imageURL {
                     cell.initials.isHidden      = true
                     cell.imageAvatar.isHidden   = false
-                    cell.imageAvatar.setImageFromURL(stringImageUrl: item.imageURL!)
-                }else{
+                    cell.imageAvatar.setImageFromURL(stringImageUrl: imageURL)
+                } else {
                     cell.imageAvatar.image      = item.image
                     cell.initials.isHidden      = true
                     cell.imageAvatar.isHidden   = false
